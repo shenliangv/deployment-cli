@@ -1,0 +1,43 @@
+{
+  "name": "deployment-cli",
+  "version": "0.0.1",
+  "description": "a front end deployment tool base on ssh2",
+  "bin": {
+    "deployment-cli": "./bin/deployment-cli.js"
+  },
+  "scripts": {
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shenliangv/deployment-cli.git"
+  },
+  "keywords": [
+    "deploy",
+    "front-end",
+    "cli"
+  ],
+  "author": "Liang Shen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shenliangv/deployment-cli/issues"
+  },
+  "homepage": "https://github.com/shenliangv/deployment-cli#readme",
+  "dependencies": {
+    "archiver": "^3.0.0",
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0",
+    "del": "^4.1.1",
+    "inquirer": "^6.3.1",
+    "ssh2": "^0.8.4"
+  },
+  "devDependencies": {
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.1.0"
+  }
+}
