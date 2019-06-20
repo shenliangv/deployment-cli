@@ -1,4 +1,4 @@
-A front end deployment tool base on ssh2
+A frontend deployment tool base on [ssh2](https://github.com/mscdex/ssh2)
 
 ## Getting Started
 ```
@@ -32,5 +32,27 @@ Options:
 
 Commands:
   deploy <path>    deployment
-  rollback <path>  Back to the specified version
+  rollback <path>  back to the specified version
+```
+
+## Configuration file
+```js
+// deploy.config.js
+module.exports = {
+  buildCommands: ["npm install", "npm run build:test"],
+  buildOutputPath: "dist",
+  repository: {
+    name: "project-name",
+    branch: "master",
+    url: "https://github.com/username/project-name.git"
+  },
+  remotePath: "/mnt/projects/nginx/www",
+  sourcePatterns: ["static", "index.html"],
+  server: {
+    host: "192.168.0.42",
+    port: 22,
+    username: "root",
+    password: "asdfasdf15165"
+  }
+};
 ```
