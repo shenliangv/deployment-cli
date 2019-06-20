@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-
 const path = require("path");
 const program = require("commander");
 const h = require("../lib/helper");
 const tasks = require("../lib/tasks");
+const operates = require("../lib/operates");
 
 program
   .version(require("../package.json").version)
@@ -19,7 +19,7 @@ program
 
 program
   .command("rollback <path>")
-  .description("Back to the specified version")
+  .description("back to the specified version")
   .action(configPath => {
     const config = require(path.resolve(process.cwd(), configPath));
     rollback(config);
@@ -33,7 +33,7 @@ if (process.argv.length === 2) {
 
 async function start(config) {
   try {
-    config = await tasks.getConfig(config, "DEPLOY");
+    config = await tasks.getConfig(config, operates.DEPLOY);
     const startTime = Date.now();
 
     await tasks.fetchSource(config);
@@ -50,7 +50,7 @@ async function start(config) {
 
 async function rollback(config) {
   try {
-    config = await tasks.getConfig(config, "ROLLBACK");
+    config = await tasks.getConfig(config, operates.ROLLBACK);
     const startTime = Date.now();
 
     await tasks.rollback(config);

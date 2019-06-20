@@ -1,6 +1,6 @@
 {
   "name": "deployment-cli",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "a front end deployment tool base on ssh2",
   "bin": {
     "deployment-cli": "./bin/deployment-cli.js"
@@ -19,8 +19,9 @@
   },
   "keywords": [
     "deploy",
-    "front-end",
-    "cli"
+    "deployment-tool",
+    "sftp-deploy",
+    "frontend"
   ],
   "author": "Liang Shen",
   "license": "MIT",
@@ -39,5 +40,8 @@
   "devDependencies": {
     "commitizen": "^3.1.1",
     "cz-conventional-changelog": "^2.1.0"
+  },
+  "engines": {
+    "node": ">= 7.6.0"
   }
 }
