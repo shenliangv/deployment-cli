@@ -36,7 +36,7 @@ async function start(config) {
     config = await tasks.getConfig(config, operates.DEPLOY);
     const startTime = Date.now();
 
-    await tasks.fetchSource(config);
+    !config.local && await tasks.fetchSource(config);
     await tasks.build(config);
     await tasks.pack(config);
     await tasks.deloy(config);
