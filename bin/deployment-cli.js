@@ -40,7 +40,7 @@ async function start(config) {
     await tasks.build(config);
     await tasks.pack(config);
     await tasks.deloy(config);
-    await tasks.cleanWorkspace(config);
+    !config.local && await tasks.cleanWorkspace(config);
 
     h.log.done(`Deployed successfully in ${(Date.now() - startTime) / 1000}s.`);
   } catch (err) {

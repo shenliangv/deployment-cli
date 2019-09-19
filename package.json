@@ -1,6 +1,6 @@
 {
   "name": "deployment-cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "a front end deployment tool base on ssh2",
   "bin": {
     "deployment-cli": "./bin/deployment-cli.js"
