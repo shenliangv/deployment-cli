@@ -1,58 +1,60 @@
 A frontend deployment tool base on [ssh2](https://github.com/mscdex/ssh2)
 
 ## Getting Started
-```
+
+```sh
 npm i -D deployment-cli
 
-# deploy
-npx deployment-cli deploy "path/to/config/file"
+npx deployment-cli --config "path/to/configuration/file"
+```
 
-# rollback
-npx deployment-cli rollback "path/to/config/file"
-```
 or
-```
+
+```sh
 npm i -g deployment-cli
 
-# deploy
-deployment-cli deploy "path/to/config/file"
-
-# rollback
-deployment-cli rollback "path/to/config/file"
+deployment-cli --config "path/to/configuration/file"
 ```
-
 
 ## Usage
-```
-Usage: deployment-cli <command> [options]
+
+```sh
+deployment-cli [options]
 
 Options:
-  -V, --version    output the version number
-  -h, --help       output usage information
-
-Commands:
-  deploy <path>    deployment
-  rollback <path>  back to the specified version
+  -V, --version        output the version number
+  -C, --config <path>  configuration file path
+  -h, --help           output usage information
 ```
 
 ## Configuration file
+
 ```js
-// deploy.config.js
+// example deploy.config.js
 module.exports = {
-  buildCommands: ["npm install", "npm run build:test"],
-  buildOutputPath: "dist",
   repository: {
-    name: "project-name",
-    branch: "master",
-    url: "https://github.com/username/project-name.git"
+    // local: true,
+    type: 'git',
+    url: 'https://git.dev.tencent.com/cyxuan0926/prison-web.git',
+    branch: 'master'
   },
-  remotePath: "/mnt/projects/nginx/www",
-  sourcePatterns: ["static", "index.html"],
-  server: {
-    host: "192.168.0.42",
+
+  buildConfig: {
+    commands: ['npm ci', 'npm run build:test'],
+    outputDir: 'dist',
+    assetsPatterns: ['static', 'index.html']
+  },
+
+  remoteOperatesConfig: {
+    remotePath: '/root/deployment-cli-test'
+  },
+
+  connectConfig: {
+    host: '192.168.0.114',
     port: 22,
-    username: "root",
-    password: "asdfasdf15165"
+    username: 'root',
+    password: '123456',
+    // privateKey: require('fs').readFileSync('/here/is/my/key')
   }
-};
+}
 ```
